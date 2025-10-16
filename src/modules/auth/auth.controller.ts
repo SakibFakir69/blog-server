@@ -76,6 +76,59 @@ const loginUser = async (req: Request, res: Response) => {
   }
 };
 
+
+export const logoutUser = async (req: Request, res: Response) => {
+  try {
+    // ✅ Clear the token cookie
+    res.clearCookie("token", {
+      httpOnly: true,
+      secure: false, // use `true` in production (HTTPS)
+      sameSite: "lax",
+    });
+
+    return res.status(200).json({
+      status: true,
+      message: "User logged out successfully",
+    });
+  } catch (error: any) {
+    console.error("Logout Error:", error);
+    return res.status(500).json({
+      status: false,
+      message: "Failed to logout user",
+      error: error.message,
+    });
+  }
+};
+
+const getMe = async (req: Request, res: Response) => {
+  try {
+    const user = (req as any)?.user;
+
+    console.log(user, " user ");
+
+    if (!user) {
+      return res
+        .status(401)
+        .json({ status: false, message: "User unAuthorize" });
+    }
+
+    const userInfo = await prisma.user.findUnique({
+      where:{
+        id:user.id
+      }
+    })
+
+    return res.status(200).json({
+      status: true,
+      message: "User info fetch successfully",
+      data: userInfo,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
 export const authController = {
-  loginUser,
+  loginUser,getMe,logoutUser
 };

@@ -3,17 +3,29 @@ import { prisma } from "../../db"
 
 
 
-const createBlog =async (payload:Prisma.BlogCreateInput)=>{
+export const createBlog = async (payload: Prisma.BlogCreateInput, userID: string) => {
+  const result = await prisma.blog.create({
+    data: {
+      title: payload.title,
+      content: payload.content,
+      tags: payload.tags,
+      user: {
+        connect: { id: userID },
+      },
+    },
+    include: {
+      user: {
+        select: {
+          id: true,
+          name: true,
+          image: true,
+        },
+      },
+    },
+  });
 
-
-    const result = await  prisma.blog.create({
-        data:payload
-    });
-    return result;
-
-
-
-}
+  return result;
+};
 
 // delete blog 
 
@@ -40,18 +52,17 @@ const singleBlog = async(id:number)=>{
 }
 
 // update blog
+const updateBlog = async (id: number, data: any) => {
+  if (!id) throw new Error("Blog ID is required");
 
-const updateBlog = async (id:number,data:any)=>{
+  const result = await prisma.blog.update({
+    where: { id }, // pass the actual number
+    data,
+  });
 
-    const result = await prisma.blog.update({
-        where:{
-            id:id
+  return result;
+};
 
-        },
-        data
-
-    })
-}
 
 
 

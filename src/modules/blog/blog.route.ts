@@ -1,16 +1,20 @@
 import { Router } from "express";
 import { blogController } from "./blog.controller";
+import { verify } from "crypto";
+import { verifyToken } from "../../middleware/VerifyToken";
 
 
 const route = Router();
 
 
 
-route.post('/create-blog', blogController.createBlog);
+route.post('/create-blog',verifyToken, blogController.createBlog);
+route.get('/all-blog',verifyToken, blogController.allBlog);
+route.put('/update-blog',blogController.updateBlog);
 route.get('/:id' , blogController.singleBlog)
 route.delete('/:id', blogController.deleteBlog);
-route.put('/update-blog', blogController.updateBlog);
-route.get('/all-blog', blogController.allBlog);
+
+
 // update , allblog 
 // find by email => 
 // auth start project 
