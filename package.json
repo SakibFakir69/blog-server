@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "dev": "ts-node src/server.ts"
+    "dev": "ts-node src/server.ts",
+    "start": "node dist/server.js",
+    "prisma:generate": "prisma generate"
   },
   "keywords": [],
   "author": "",
@@ -24,6 +26,7 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
+    "@prisma/adapter-neon": "^6.17.1",
     "@prisma/client": "^6.17.0",
     "@prisma/extension-accelerate": "^2.0.2",
     "bcrypt": "^6.0.0",
