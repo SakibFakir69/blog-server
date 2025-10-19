@@ -41,12 +41,12 @@ const loginUser = async (req: Request, res: Response) => {
     const token = jwt.sign(payload, process.env.JWT_SECRET!, { expiresIn: "7d" });
 
    res.cookie("token", token, {
-  httpOnly: true,            // prevents JS access, always true
-  secure: true,              // ✅ only over HTTPS in production
-  sameSite: "strict",        // prevents CSRF attacks
+  httpOnly: true,
+  secure: process.env.NODE_ENV === "production", // true only in prod
+  sameSite: process.env.NODE_ENV === "production" ? "none" : "lax", // allow cross-site cookies in prod
   maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
- 
 });
+
 
     // ✅ Send response
     return res.status(200).json({
