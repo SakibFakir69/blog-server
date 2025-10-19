@@ -40,13 +40,13 @@ const loginUser = async (req: Request, res: Response) => {
     // ✅ Sign JWT
     const token = jwt.sign(payload, process.env.JWT_SECRET!, { expiresIn: "7d" });
 
-    // ✅ Set HttpOnly cookie
-    res.cookie("token", token, {
-      httpOnly: true,
-      secure: false, // HTTPS only in production
-      sameSite: "lax",
-      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-    });
+   res.cookie("token", token, {
+  httpOnly: true,            // prevents JS access, always true
+  secure: true,              // ✅ only over HTTPS in production
+  sameSite: "strict",        // prevents CSRF attacks
+  maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+ 
+});
 
     // ✅ Send response
     return res.status(200).json({
