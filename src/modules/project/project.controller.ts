@@ -46,7 +46,7 @@ const createProject =async (req:Request, res:Response)=>{
 
 
 }
-// update project
+
 
 const updateProject = async (req:Request, res:Response)=>{
 
