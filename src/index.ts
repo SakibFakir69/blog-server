@@ -12,8 +12,8 @@ const app = express();
 // ✅ Middleware
 app.use(
   cors({
-    origin: ["https://blog-qvx3b2ykl-sakibfakirs-projects.vercel.app","https://blog-5ad23efxt-sakibfakirs-projects.vercel.app" ] ,// frontend URL
-    
+    origin: ["https://blog-qvx3b2ykl-sakibfakirs-projects.vercel.app","https://blog-5ad23efxt-sakibfakirs-projects.vercel.app",'https://blog-ui-rosy.vercel.app' ] ,// frontend URL
+
     credentials: true, // allow cookies to be sent
   })
 );
