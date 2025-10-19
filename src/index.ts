@@ -14,7 +14,9 @@ app.use(
   cors({
     origin: ["https://blog-qvx3b2ykl-sakibfakirs-projects.vercel.app","https://blog-5ad23efxt-sakibfakirs-projects.vercel.app",'https://blog-ui-rosy.vercel.app' ] ,// frontend URL
 
-    credentials: true, // allow cookies to be sent
+     credentials: true, // allow cookies
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // allow all HTTP methods
+    allowedHeaders: ["Content-Type", "Authorization"], // allow headers
   })
 );
 app.use(express.json());
