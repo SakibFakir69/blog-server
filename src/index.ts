@@ -6,6 +6,7 @@ import { userRouter } from "./modules/users/user.route";
 import { projectRouter } from "./modules/project/project.route";
 import { blogRouter } from "./modules/blog/blog.route";
 import { authRouter } from "./modules/auth/auth.route";
+import "types/express";
 
 const app = express();
 
