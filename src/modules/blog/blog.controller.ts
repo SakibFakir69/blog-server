@@ -10,7 +10,7 @@ import { prisma } from "../../db";
 
 const createBlog = async (req:Request, res:Response)=>{
    
-    const userId = req .user?.id as string;
+    const userId = req.user?.id as string;
 
     try {
 

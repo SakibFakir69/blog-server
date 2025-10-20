@@ -2,8 +2,8 @@
   "name": "server-2",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/server.js",
-  "scripts": {
+  "main": "dist/src/server.js",
+    "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc --skipLibCheck",
     "dev": "ts-node src/server.ts",
