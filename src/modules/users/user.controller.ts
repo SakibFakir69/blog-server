@@ -17,7 +17,6 @@ const createUser =async (req:Request, res:Response)=>{
             data:result
         })
 
-
     } catch (error: unknown) {
   if (error instanceof Error) {
     
