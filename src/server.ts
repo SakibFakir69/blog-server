@@ -17,7 +17,7 @@ let server:any;
   }
 })();
 
-// Graceful shutdown when Ctrl + C or system stop
+
 process.on("SIGINT", () => {
   if (server) {
     server.close(() => {
