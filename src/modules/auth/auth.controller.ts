@@ -48,7 +48,7 @@ const loginUser = async (req: Request, res: Response) => {
 });
 
 
-    // ✅ Send response
+    // Send response
     return res.status(200).json({
       status: true,
       message: "User login successful",
@@ -79,7 +79,7 @@ const loginUser = async (req: Request, res: Response) => {
 
 export const logoutUser = async (req: Request, res: Response) => {
   try {
-    // ✅ Clear the token cookie
+    //  Clear the token cookie
     res.clearCookie("token", {
       httpOnly: true,
       secure: false, // use `true` in production (HTTPS)
@@ -102,7 +102,7 @@ export const logoutUser = async (req: Request, res: Response) => {
 
 const getMe = async (req: Request, res: Response) => {
   try {
-    const user = (req as any)?.user;
+    const user = req?.user
 
     console.log(user, " user ");
 
