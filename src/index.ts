@@ -1,4 +1,4 @@
-import express from "express";
+import express,{Request,Response} from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 
@@ -30,17 +30,10 @@ app.use("/api/v1/blog", blogRouter);
 app.use("/api/v1/auth", authRouter);
 
 // ✅ Test route
-app.get("/", (req, res) => {
+app.get("/", (req:Request, res:Response) => {
   res.send("Hello World!");
 });
 
-// ✅ Global error handling (optional but recommended)
-app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
-  console.error(err.stack);
-  res.status(err.status || 500).json({
-    status: false,
-    message: err.message || "Internal Server Error",
-  });
-});
+
 
 export const ServerApp = app;
