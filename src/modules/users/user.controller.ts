@@ -11,7 +11,6 @@ const createUser =async (req:Request, res:Response)=>{
 
         console.log("user api hit")
 
-
         return res.status(201).json({
             status:true ,
             message:"User Created Successfully",
