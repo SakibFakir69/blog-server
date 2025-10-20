@@ -29,7 +29,7 @@ app.use("/api/v1/project", projectRouter);
 app.use("/api/v1/blog", blogRouter);
 app.use("/api/v1/auth", authRouter);
 
-// ✅ Test route
+
 app.get("/", (req:Request, res:Response) => {
   res.send("Hello World!");
 });
