@@ -19,8 +19,9 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization"], // allow headers
   })
 );
-app.use(express.json());
 app.use(cookieParser()); // ✅ Needed to read cookies
+app.use(express.json());
+
 
 // ✅ Routes
 app.use("/api/v1/users", userRouter);
