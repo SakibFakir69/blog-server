@@ -9,7 +9,7 @@ import { authRouter } from "./modules/auth/auth.route";
 
 const app = express();
 
-// ✅ Middleware
+
 app.use(
   cors({
     origin: ["https://blog-qvx3b2ykl-sakibfakirs-projects.vercel.app","https://blog-5ad23efxt-sakibfakirs-projects.vercel.app",'https://blog-ui-rosy.vercel.app' ] ,// frontend URL
